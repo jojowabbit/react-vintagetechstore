@@ -10,10 +10,12 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import ProductDetails from "./pages/ProductDetails";
 import Products from "./pages/Products";
-// Component
+// Components
+import Header from "./components/Header";
 function App() {
   return (
     <Router>
+      <Header />
       <Switch>
         <Route path="/" exact>
           <Home />

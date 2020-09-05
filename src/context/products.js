@@ -11,9 +11,11 @@ export const ProductProvider = ({ children }) => {
   const [featured, setFeatured] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     axios
       .get(`${url}/products`)
       .then((storeProducts) => console.log(storeProducts));
+    setLoading(false);
     return () => {};
   }, []);
 

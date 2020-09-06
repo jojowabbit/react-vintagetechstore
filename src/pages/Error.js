@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Error = () => {
+export default function Error() {
   return (
     <section className="section error-page">
       <div className="error-container">
@@ -12,6 +12,4 @@ const Error = () => {
       </div>
     </section>
   );
-};
-
-export default Error;
+}

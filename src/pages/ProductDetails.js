@@ -4,7 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { ProductContext } from "../context/products";
 import Loading from "../components/Loading";
 
-const ProductDetails = () => {
+export default function ProductDetails() {
   const { id } = useParams();
   const history = useHistory();
   const { products } = useContext(ProductContext);
@@ -41,6 +41,4 @@ const ProductDetails = () => {
       </section>
     );
   }
-};
-
-export default ProductDetails;
+}

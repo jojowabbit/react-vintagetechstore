@@ -6,7 +6,7 @@ import { filterFeatured } from "../utils/helpers";
 
 export const ProductContext = React.createContext();
 
-export const ProductProvider = ({ children }) => {
+export function ProductProvider({ children }) {
   const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState([]);
   const [featured, setFeatured] = useState([]);
@@ -27,4 +27,4 @@ export const ProductProvider = ({ children }) => {
       {children}
     </ProductContext.Provider>
   );
-};
+}

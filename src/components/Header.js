@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+import CardLink from "./Cart/CartLink";
 import logo from "../assets/logo.svg";
 
 const Header = () => {
@@ -24,7 +26,7 @@ const Header = () => {
               <Link to="/login">login</Link>
             </li>
             <li>
-              <Link to="/cart">cart</Link>
+              <CardLink />
             </li>
           </div>
         </ul>

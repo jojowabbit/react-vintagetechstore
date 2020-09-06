@@ -2,12 +2,14 @@ import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 import { ProductContext } from "../context/products";
+import { CartContext } from "../context/cart";
 import Loading from "../components/Loading";
 
 export default function ProductDetails() {
   const { id } = useParams();
   const history = useHistory();
   const { products } = useContext(ProductContext);
+  const { addToCart } = useContext(CartContext);
   const product = products.find((item) => item.id === parseInt(id));
 
   // rather than check loading = t/f, use this to check if array is empty
@@ -31,6 +33,7 @@ export default function ProductDetails() {
           <button
             onClick={() => {
               //add to cart
+              addToCart(product);
               history.push("/cart");
             }}
             className="btn btn-primary btn-block"

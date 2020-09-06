@@ -41,6 +41,7 @@ export function CartProvider({ children }) {
   };
   // decrease amount
   const decreaseAmount = (id, amount) => {
+    // remove the item from cart if less than
     if (amount === 1) {
       removeItem(id);
     } else {
@@ -53,9 +54,29 @@ export function CartProvider({ children }) {
     }
   };
   // add to cart
-  const addToCart = (product) => {};
+  const addToCart = (product) => {
+    const {
+      id,
+      image: { url },
+      title,
+      price,
+    } = product;
+    // search for the matched item, return undefine / matched item
+    const item = [...cart].find((item) => item.id === id);
+    if (item) {
+      increaseAmount(id);
+      // stop the function
+      return;
+    } else {
+      const newItem = { id, image: url, title, price, amount: 1 };
+      const newCart = [...cart, newItem];
+      setCart(newCart);
+    }
+  };
   // clear cart
-  const clearCart = () => {};
+  const clearCart = () => {
+    setCart([]);
+  };
 
   return (
     <CartContext.Provider

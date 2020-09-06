@@ -4,7 +4,9 @@ import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 import { CartContext } from "../../context/cart";
 
 const CartItem = ({ id, title, price, image, amount }) => {
-  const { removeItem } = useContext(CartContext);
+  const { removeItem, increaseAmount, decreaseAmount } = useContext(
+    CartContext
+  );
   return (
     <article className="cart-item">
       <img src={image} alt={title} />
@@ -23,15 +25,15 @@ const CartItem = ({ id, title, price, image, amount }) => {
         <button
           type="button"
           className="cart-btn amount-btn"
-          onClick={() => console.log("amount ++")}
+          onClick={() => increaseAmount(id)}
         >
           <FaAngleUp />
         </button>
-        <p className="item-amount">{price}</p>
+        <p className="item-amount">{amount}</p>
         <button
           type="button"
           className="cart-btn amount-btn"
-          onClick={() => console.log("amount --")}
+          onClick={() => decreaseAmount(id, amount)}
         >
           <FaAngleDown />
         </button>

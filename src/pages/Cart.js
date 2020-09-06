@@ -26,7 +26,7 @@ export default function Cart() {
         </Link>
       ) : (
         <Link to="/login" className="btn btn-primary btn-block">
-          logn
+          login
         </Link>
       )}
     </section>

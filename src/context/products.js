@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import url from "../utils/URL";
-import { filterFeatured } from "../utils/helpers";
+import { filterFeatured, flattenProducts } from "../utils/helpers";
 
 export const ProductContext = React.createContext();
 
@@ -14,8 +14,9 @@ export function ProductProvider({ children }) {
   useEffect(() => {
     setLoading(true);
     axios.get(`${url}/products`).then((response) => {
-      const featured = filterFeatured(response.data);
-      setProducts(response.data);
+      const featured = filterFeatured(flattenProducts(response.data));
+      const products = flattenProducts(response.data);
+      setProducts(products);
       setFeatured(featured);
     });
     setLoading(false);

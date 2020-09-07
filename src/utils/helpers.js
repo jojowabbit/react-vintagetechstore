@@ -3,9 +3,9 @@ import url from "./URL";
 export function flattenProducts(data) {
   return data.map((item) => {
     // cloudinaru setup
-    // let image = item.image.url;
+    let image = item.image.url;
     // local setup + no deployment
-    let image = `${url}${item.image.url}`;
+    // let image = `${url}${item.image.url}`;
     return { ...item, image };
   });
 }

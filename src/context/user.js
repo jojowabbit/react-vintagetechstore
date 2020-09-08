@@ -10,7 +10,11 @@ function getUserFromLocalStorage() {
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(getUserFromLocalStorage());
-  const [alert, setAlert] = useState({ show: false, msg: "", type: "success" });
+  const [alert, setAlert] = useState({
+    show: false,
+    msg: "",
+    type: "success",
+  });
 
   const showAlert = ({ msg, type = "success" }) => {
     setAlert({ show: true, msg, type });

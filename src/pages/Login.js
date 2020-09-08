@@ -10,8 +10,8 @@ import { useHistory } from "react-router-dom";
 export default function Login() {
   const history = useHistory();
   // setup user context
-  const value = useContext(UserContext);
-  console.log(value);
+  const { userLogin } = useContext(UserContext);
+
   // state values
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -45,7 +45,14 @@ export default function Login() {
     // handle response
     if (response) {
       // redirect user after login/register
-      console.log("success", response);
+      const {
+        jwt: token,
+        user: { username },
+      } = response.data;
+
+      const newUser = { token, username };
+      userLogin(newUser);
+      history.push("/products");
     } else {
       // show alert in case no response
     }

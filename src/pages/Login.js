@@ -10,7 +10,7 @@ import { useHistory } from "react-router-dom";
 export default function Login() {
   const history = useHistory();
   // setup user context
-  const { userLogin } = useContext(UserContext);
+  const { userLogin, alert, showAlert } = useContext(UserContext);
 
   // state values
   const [email, setEmail] = useState("");
@@ -52,9 +52,11 @@ export default function Login() {
 
       const newUser = { token, username };
       userLogin(newUser);
+      showAlert({ msg: `you are logged in: ${username}, shop away !` });
       history.push("/products");
     } else {
       // show alert in case no response
+      showAlert({ msg: "error occured, please try again", type: "danger" });
     }
   };
 

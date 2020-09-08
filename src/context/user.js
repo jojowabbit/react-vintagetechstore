@@ -10,6 +10,15 @@ function getUserFromLocalStorage() {
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(getUserFromLocalStorage());
+  const [alert, setAlert] = useState({ show: false, msg: "", type: "success" });
+
+  const showAlert = ({ msg, type = "success" }) => {
+    setAlert({ show: true, msg, type });
+  };
+
+  const hideAlert = () => {
+    setAlert({ ...alert, show: false });
+  };
 
   const userLogin = (user) => {
     setUser(user);
@@ -21,7 +30,9 @@ export const UserProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ user, userLogin, userLogout }}>
+    <UserContext.Provider
+      value={{ user, userLogin, userLogout, alert, showAlert, hideAlert }}
+    >
       {children}
     </UserContext.Provider>
   );

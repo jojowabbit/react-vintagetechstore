@@ -34,6 +34,7 @@ export default function Login() {
     let response;
     if (isMember) {
       // response = await loginUser
+      response = await loginUser({ email, password });
     } else {
       // response  = await  registerUser
       response = await registerUser({ email, password, username });
@@ -41,7 +42,7 @@ export default function Login() {
 
     // handle response
     if (response) {
-      // redirect user to login/register
+      // redirect user after login/register
       console.log("success", response);
     } else {
       // show alert in case no response

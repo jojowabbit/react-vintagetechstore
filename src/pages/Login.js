@@ -19,7 +19,8 @@ export default function Login() {
   const [isMember, setIsMember] = useState(true);
 
   // check if field filled & let user sign in, username set to 'default' to let them sign in, empty str will prevent them from sign in
-  let isEmpty = !email || !password || !username;
+  // hide the submit butotn when alert msg is show and prevent user to keep submitting
+  let isEmpty = !email || !password || !username || alert.show;
 
   const toggleMember = () => {
     setIsMember((prevMember) => {
@@ -32,6 +33,7 @@ export default function Login() {
   };
 
   const handleSubmit = async (e) => {
+    showAlert({ msg: "accessing user db, please wait..." });
     e.preventDefault();
     let response;
     if (isMember) {
@@ -111,7 +113,7 @@ export default function Login() {
             className="btn btn-block btn-primary"
             onClick={handleSubmit}
           >
-            sign in
+            submit
           </button>
         )}
         {/* register link */}

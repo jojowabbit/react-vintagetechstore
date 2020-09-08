@@ -36,11 +36,13 @@ export default function Login() {
       // response = await loginUser
     } else {
       // response  = await  registerUser
+      response = await registerUser({ email, password, username });
     }
 
     // handle response
     if (response) {
       // redirect user to login/register
+      console.log("success", response);
     } else {
       // show alert in case no response
     }
@@ -103,7 +105,7 @@ export default function Login() {
         {/* register link */}
         <p className="register-link">
           {isMember ? "need to register" : "already a member"}
-          <button type="button" onClick={handleSubmit}>
+          <button type="button" onClick={toggleMember}>
             click here
           </button>
         </p>

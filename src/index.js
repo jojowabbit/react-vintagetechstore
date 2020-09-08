@@ -6,14 +6,17 @@ import * as serviceWorker from "./serviceWorker";
 
 import { ProductProvider } from "./context/products";
 import { CartProvider } from "./context/cart";
+import { UserProvider } from "./context/user";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ProductProvider>
-      <CartProvider>
-        <App />
-      </CartProvider>
-    </ProductProvider>
+    <UserProvider>
+      <ProductProvider>
+        <CartProvider>
+          <App />
+        </CartProvider>
+      </ProductProvider>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

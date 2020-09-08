@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 // strapi function
+import loginUser from ".././strapi/loginUser";
+import registerUser from ".././strapi/registerUser";
+
 // handle user
 import { useHistory } from "react-router-dom";
 
@@ -13,12 +16,34 @@ export default function Login() {
   const [username, setUsername] = useState("default");
   const [isMember, setIsMember] = useState(true);
 
-  let isEmpty = false;
+  // check if field filled & let user sign in, username set to 'default' to let them sign in, empty str will prevent them from sign in
+  let isEmpty = !email || !password || !username;
 
-  const toggleMember = () => {};
+  const toggleMember = () => {
+    setIsMember((prevMember) => {
+      // flick the boolean
+      let isMember = !prevMember;
+      // set username to default to allow sign in || empty str to register if they are not member
+      isMember ? setUsername("default") : setUsername("");
+      return isMember;
+    });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    let response;
+    if (isMember) {
+      // response = await loginUser
+    } else {
+      // response  = await  registerUser
+    }
+
+    // handle response
+    if (response) {
+      // redirect user to login/register
+    } else {
+      // show alert in case no response
+    }
   };
 
   return (
@@ -72,7 +97,7 @@ export default function Login() {
             className="btn btn-block btn-primary"
             onClick={handleSubmit}
           >
-            submit
+            sign in
           </button>
         )}
         {/* register link */}

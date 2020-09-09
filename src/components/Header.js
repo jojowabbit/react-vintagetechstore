@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-
-import CardLink from "./Cart/CartLink";
+import { UserContext } from "../context/user";
+import CartLink from "./Cart/CartLink";
+import LoginLink from "./LoginLink";
 import logo from "../assets/logo.svg";
 
 const Header = () => {
+  const { user } = useContext(UserContext);
   return (
     <header className="header">
       <img src={logo} alt="vintagetech logo" className="logo" />
@@ -20,14 +22,15 @@ const Header = () => {
             <li>
               <Link to="/products">products</Link>
             </li>
+            {user.token && (
+              <li>
+                <Link to="/checkout">checkout</Link>
+              </li>
+            )}
           </div>
           <div>
-            <li>
-              <Link to="/login">login</Link>
-            </li>
-            <li>
-              <CardLink />
-            </li>
+            <LoginLink />
+            <CartLink />
           </div>
         </ul>
       </nav>

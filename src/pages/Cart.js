@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { CartContext } from "../context/cart";
+import { UserContext } from "../context/user";
 import EmptyCart from "../components/Cart/EmptyCart";
 import CartItem from "../components/Cart/CartItem";
 //import { UserContext } from "../context/user";
 
 export default function Cart() {
   const { cart, total } = useContext(CartContext);
-  const user = false;
+  const { user } = useContext(UserContext);
   if (cart.length === 0) {
     return <EmptyCart />;
   }
@@ -20,7 +21,8 @@ export default function Cart() {
         return <CartItem key={item.id} {...item} />;
       })}
       <h2>total: RM {total}</h2>
-      {user ? (
+      {/* instead of user, check for user token because user object  exist but no token key inside */}
+      {user.token ? (
         <Link to="/checkout" className="btn btn-primary btn-block">
           checkout
         </Link>

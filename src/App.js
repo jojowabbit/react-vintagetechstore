@@ -13,6 +13,7 @@ import Products from "./pages/Products";
 // Components
 import Header from "./components/Header";
 import Alert from "./components/Alert";
+import PrivateRoute from "./components/PrivateRoute";
 function App() {
   return (
     <Router>
@@ -28,9 +29,9 @@ function App() {
         <Route path="/cart">
           <Cart />
         </Route>
-        <Route path="/checkout">
+        <PrivateRoute path="/checkout">
           <Checkout />
-        </Route>
+        </PrivateRoute>
         <Route path="/login">
           <Login />
         </Route>
